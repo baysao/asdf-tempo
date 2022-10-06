@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+_install() {
+	local install_type=$1
+	local version=$2
+	local version1=$(echo $version | sed 's/^v//g')
+	local install_path=$3
+	tmpd=$(mktemp -d)
+	for sv in tempo; do
+		cd $tmpd
+		source_path="https://github.com/grafana/tempo/releases/download/$version/${sv}_${version1}_linux_amd64.tar.gz"
+		echo curl -skL $source_path -o ${version}.tar.gz
+		curl -skL $source_path -o ${version}.tar.gz
+		mkdir -p $install_path/bin/
+		tar -xvzf ${version}.tar.gz -C $install_path/bin/
+		#mv ${sv}-linux-amd64 $install_path/bin/$sv
+
+	done
+	rm -rf $tmpd
+}
+
+_install $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH

@@ -10,6 +10,6 @@ asdf plugin-add tempo https://github.com/baysao/asdf-tempo.git
 
 ## Use
 
-Plugin will install 3 tools: logcli, promtail and tempo
+Plugin will install 3 tools: tempo, tempo-cli, tempo-query
 
 Check [asdf](https://github.com/asdf-vm/asdf) readme for instructions on how to install & manage versions of Loki.
